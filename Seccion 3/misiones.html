@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de misiones</title>
+    <link rel="stylesheet" href="misiones.css">
+</head>
+<body>
+    <h1>📋 Panel de Misiones</h1>
+
+<div class="form">
+    <input type="text" id="nombre" placeholder="Nombre misión">
+    <input type="text" id="descripcion" placeholder="Descripción">
+
+    <select id="piloto">
+        <option value="">Selecciona piloto</option>
+    </select>
+
+    <select id="dificultad">
+        <option value="facil">Fácil</option>
+        <option value="media">Media</option>
+        <option value="dificil">Difícil</option>
+        <option value="suicida">Suicida</option>
+    </select>
+
+    <button id="addBtn">Añadir misión</button>
+</div>
+
+
+<div>
+    <select id="filtroDificultad">
+        <option value="todos">Todas</option>
+        <option value="facil">Fácil</option>
+        <option value="media">Media</option>
+        <option value="dificil">Difícil</option>
+        <option value="suicida">Suicida</option>
+    </select>
+</div>
+
+<div class="kanban">
+
+    <div class="col">
+        <h2>Pendiente (<span id="Pendiente">0</span>)</h2>
+        <div id="pendiente"></div>
+    </div>
+
+    <div class="col">
+        <h2>En curso (<span id="Curso">0</span>)</h2>
+        <div id="curso"></div>
+    </div>
+
+    <div class="col">
+        <h2>Completada (<span id="Completada">0</span>)</h2>
+        <div id="completada"></div>
+    </div>
+
+</div>
+
+<script src="misiones.js"></script>
+</body>
+</html>
+</body>
+</html>

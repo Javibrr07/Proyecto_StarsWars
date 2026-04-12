@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0f1a;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffd700;
+    margin-bottom: 30px;
+}
+
+.control {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+
+
+button {
+    background: #ffff00;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ffcc00;
+}
+
+#contador {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00eaff;
+}
+
+.hangar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));/*Ajusta el ancho depende del tamaño y hace que ninguna sea menor a 230 y estira para rellenar espacio*/
+    gap: 15px;
+}
+
+.card {
+    background: #1a2238;
+    border: 2px solid #2d3a5f;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.2s; /*para que sea mas limpio el aumento*/
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+.estado-operativa {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.estado-reparacion {
+    color: orange;
+    font-weight: bold;
+}
+
+.estado-destruida {
+    color: red;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .control {
+        gap: 10px;
+    }
+
+    input, select, button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #contador {
+        font-size: 14px;
+    }
+
+    .hangar {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        font-size: 14px;
+    }
+}

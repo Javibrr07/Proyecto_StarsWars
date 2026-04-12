@@ -1,0 +1,90 @@
+body {
+    font-family: Arial;
+    background: #0b0f1a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: gold;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    background: gold;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.kanban {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.col {
+    flex:1;
+    background: #1a2238;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.card {
+    background: #2d3a5f;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.card button {
+    margin-top: 5px;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .form {
+        gap: 8px;
+    }
+
+    input, select, button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .kanban {
+        gap: 10px;
+    }
+
+    .col {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card {
+        font-size: 14px;
+    }
+
+    .card button {
+        font-size: 13px;
+    }
+}
