@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>
+        Registro de pilotos
+    </title>
+
+    <link rel="stylesheet" href="estilos.css">
+    
+</head>
+
+<body>
+    
+
+<!--HEADER-->
+
+
+    <header>
+
+        <h1 id="Hangar">Hangar de naves</h1>
+
+        <h1 id="Pilotos">Registro de pilotos</h1>
+
+        <h1 id="Misiones">Panel de misiones</h1>
+
+        <h1 id="Alianza">Modo de alianza</h1>
+        
+    </header>
+
+
+    <main>
+
+
+<!--Seccion 2 REGISTRO PILOTOS  -->
+
+
+   <div class="registroPilotos">
+
+    <h1 id="h1cuestionario">Registre su piloto</h1>
+
+    <div class="contenedorPrincipal">
+
+
+        <div class="divFormulario">
+
+            <img id="soldado" src="./imgStarWars/soldado.png">
+
+            <form id="formularioPilotos" class="formularioPilotos">
+
+
+                <input type="text" id="inputNombre" required placeholder="Nombre del piloto:">
+
+                <input type="text" id="inputRango" required placeholder="Rango:">
+
+                <input type="number" id="inputVictorias" required placeholder="Número de victorias:" min="0">
+
+                <select id="selectNave" required>
+
+                    <option value="" disabled selected>Nave asignada:</option>
+
+                </select>
+
+                <select id="selectEstado" required>
+
+                    <option value="" disabled selected>Estado del piloto:</option>
+
+                    <option value="Activo">Activo</option>
+
+                    <option value="Herido">Herido</option>
+
+                    <option value="KIA">KIA</option>
+
+                </select>
+
+                <button id="guardarPiloto">Guardar piloto</button>
+
+
+            </form>
+
+
+        </div>
+
+        <div class="divLista">
+
+            <h2>Flota Registrada</h2>
+
+            <table class="tablaPilotos">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Piloto</th>
+
+                        <th>Rango</th>
+
+                        <th>Victorias</th>
+
+                        <th>Nave</th>
+
+                        <th>Estado</th>
+
+                        <th></th>
+                        
+                    </tr>
+
+                </thead>
+
+                <tbody id="cuerpoTablaPilotos">
+
+                    </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+    </main>
+
+
+<!--FOOTER-->
+
+
+    <footer>
+
+        
+    </footer>
+
+
+    <script src="java.js"></script>
+
+
+</body>
+</html>

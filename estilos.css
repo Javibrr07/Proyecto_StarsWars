@@ -1,0 +1,188 @@
+/*header*/
+
+/*h1 del header */
+
+#Hangar{
+    font-size: 2.8vw;
+    color:rgb(255, 255, 255);
+}
+
+#Pilotos{
+    font-size: 2.8vw;
+    color:rgb(255, 255, 255);
+}
+
+#Misiones{
+    font-size: 2.8vw;
+    color:rgb(255, 255, 255);
+}
+
+#Alianza{
+    font-size: 2.8vw;
+    color:rgb(255, 255, 255);
+}
+
+header h1{
+    margin-left: 70%;
+}
+
+/*Alineacion del contenido,imagen y responsive del header*/
+
+header{
+    background-image:url("./imgStarWars/header.png") ;
+    background-size: cover;
+    background-position: top;
+    display:flex;
+    flex-direction: column;
+    gap: 2vw;
+    min-height: 35vw;
+    width: 100%;
+}
+
+/*todo el body*/
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("./imgStarWars/background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*footer*/
+
+footer{
+    background-image: url("./imgStarWars/footer.jpg");
+    background-size: cover;
+    min-height: 60vw;
+    margin-top: auto;
+    width: 100%;
+}
+
+
+
+
+/*seccion 2 pilotos*/
+
+.contenedorPrincipal {/*con flex nos organizamos mejor*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3vw;
+    margin-top: 15vw;
+}
+
+
+#h1cuestionario{
+    color: rgb(255, 255, 255);
+    font-size: 8vw;
+    text-align: center;
+    margin-bottom: -10vw;
+}
+
+.divFormulario {/*formulario responsive */
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vw;
+    border-radius: 8vw;
+    width: 48vw; 
+    border: 0.4vw solid red;
+    margin-left: 4vw;
+}
+
+.formularioPilotos{
+    display:flex;
+    flex-direction: column;
+    gap: 4vw;
+}
+
+#soldado{/*al estar dentro de divformulario,solo le ajustamos el tamaño*/
+    width: 20vw;
+}
+
+.divLista {/*lista responsive en la que van los pilotos añadidos*/
+    width: 38vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 0.2vw solid white;
+    border-radius: 2vw;
+    padding: 2vw;
+    color: white;
+    margin-right: 4vw;
+    height: 47.6vw;
+}
+
+.divLista h2 {
+    text-align: center;
+    margin-bottom: 2vw;
+    font-size: 4vw;
+    color: red;
+}
+
+.tablaPilotos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.6vw;
+    text-align: center;
+}
+
+.tablaPilotos th {
+    border-bottom: 0.2vw solid red;
+    padding: 1vw;
+}
+.tablaPilotos td {
+    padding: 1vw;
+    border-bottom: 0.1vw solid gray;
+}
+
+.formularioPilotos input {/*input responsive*/
+    width: 28vw;
+    font-size: 2.3vw;
+    margin-right: 2vw;
+    border-radius: 2vw;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-width: 0.1vw;
+    padding-left: 1vw;
+}
+
+.formularioPilotos button {/*botones responsive*/
+    font-size: 1.8vw;
+    width: 18vw;
+    height: 3.5vw;
+    border-radius: 2vw;
+    border-width: 0.35vw;
+    transform: translate(5.5vw,1vw);
+}
+
+.formularioPilotos select{/*select responsive*/
+    font-size: 2vw;
+    width: 30vw;
+    border-radius: 1vw;
+    border-width: 0.3vw;
+    background-size: 2vw;
+}
+
+
+.btn-accion {/*estos son los botones que se crean al añadir un piloto*/
+    cursor: pointer;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    margin: 0.5vw;
+    border: none;
+    width: 6vw;
+    border-style: solid;
+    border-color: red;
+    border-radius: 2vw;
+    border-width: 0.2vw;
+    transform: translate(-1.5vw);
+}
+
