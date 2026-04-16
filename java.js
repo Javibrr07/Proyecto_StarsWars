@@ -1,36 +1,117 @@
 //header
 
-let seccion1 = document.getElementById("Hangar");
+//titulos del header
 
-let seccion2 = document.getElementById("Pilotos");
+let TituloSeccion1 = document.getElementById("Hangar");
 
-let seccion3 = document.getElementById("Misiones");
+let TituloSeccion2 = document.getElementById("Pilotos");
 
-let seccion4 = document.getElementById("Alianza");
+let TituloSeccion3 = document.getElementById("Misiones");
+
+let TituloSeccion4 = document.getElementById("Alianza");
+
+//clases del div del cuerpo
+
+let seccion1 = document.getElementById("seccion1");
+
+let seccion2 = document.getElementById("seccion2");
+
+let seccion3 = document.getElementById("seccion3");
+
+let seccion4 = document.getElementById("seccion4");
 
 
 
-seccion1.addEventListener("click",function(){
+//funciones para que solo se muestre la seccion elegida elegida
 
+TituloSeccion1.addEventListener("click",function(){
 
+//secciones/contenidos
+seccion1.className="hangarNaves";
+
+seccion2.className="oculto";
+
+seccion3.className="oculto";
+
+seccion3.className="oculto";
+
+//titulos
+TituloSeccion1.className="tituloDestacado";//tituloDestacado
+
+TituloSeccion2.className="titulo";
+
+TituloSeccion3.className="titulo";
+
+TituloSeccion4.className="titulo";
 
 })
 
-seccion2.addEventListener("click",function(){
 
 
+TituloSeccion2.addEventListener("click",function(){
+
+seccion1.className="hangarNaves";
+
+seccion2.className="oculto";
+
+seccion3.className="oculto";
+
+seccion3.className="oculto";
+
+//titulos
+TituloSeccion1.className="titulo";
+
+TituloSeccion2.className="tituloDestacado";
+
+TituloSeccion3.className="titulo";
+
+TituloSeccion4.className="titulo";
 
 })
 
-seccion3.addEventListener("click",function(){
 
 
+TituloSeccion3.addEventListener("click",function(){
+
+seccion1.className="hangarNaves";
+
+seccion2.className="oculto";
+
+seccion3.className="oculto";
+
+seccion3.className="oculto";
+
+//titulos
+TituloSeccion1.className="titulo";
+
+TituloSeccion2.className="titulo";
+
+TituloSeccion3.className="tituloDestacado";
+
+TituloSeccion4.className="titulo";
 
 })
 
-seccion4.addEventListener("click",function(){
 
 
+TituloSeccion4.addEventListener("click",function(){
+
+seccion1.className="hangarNaves";
+
+seccion2.className="oculto";
+
+seccion3.className="oculto";
+
+seccion3.className="oculto";
+
+//titulos
+TituloSeccion1.className="titulo";
+
+TituloSeccion2.className="titulo";
+
+TituloSeccion3.className="titulo";
+
+TituloSeccion4.className="tituloDestacado";
 
 })
 
@@ -115,8 +196,9 @@ function borrarPiloto(i){//funcion para borrar piloto
     let confirmar = confirm("¿Eliminar piloto?");
 
     if(confirmar){
-        listaPilotos.splice(i,1);
-        pintarPilotos();
+        listaPilotos.splice(i,1);//borrar del array
+        localStorage.setItem("pilotos", JSON.stringify(listaPilotos));//borrar del local storage(si no, no sirve de nada borrar del array)
+        pintarPilotos();//pintar la nueva lista con un piloto menos
     }
 }
 
@@ -172,70 +254,29 @@ btnGuardarPiloto.addEventListener("click",function(event){//funcion para guardar
         btnGuardarPiloto.textContent = "Guardar piloto";
     }
 
-    //document.getElementById("formularioPilotos").reset();
+    localStorage.setItem("pilotos", JSON.stringify(listaPilotos));//guardamos en local storage
+    
     pintarPilotos();//al llamar a pintarPilotos,se añade a la tabla
 })
 
 
+function cargarPilotosDesdeLocalStorage(){//esto sirve para persistir los pilotos en la local storage
+    let datosGuardados = localStorage.getItem("pilotos");
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function editarPiloto(indice) {//esta funcion edita el piloto
-    
-    let piloto = listaPilotos[indice];
-
-    document.getElementById("inputNombre").value = piloto.nombre;
-    document.getElementById("inputRango").value = piloto.rango;
-    document.getElementById("inputVictorias").value = piloto.victorias;
-    document.getElementById("selectNave").value = piloto.nave;
-    document.getElementById("selectEstado").value = piloto.estado;
-
-    // Avisamos de que ahora estamos editando este índice
-    indiceEditando = indice;
-    btnGuardarPiloto.textContent = "Actualizar piloto"; // Cambiamos el texto para que se entienda que ya no es guardar,es actualizar
-}
-
-function eliminarPiloto(indice) {// esta  función  elimina del array al piloto
-    let confirmacion = confirm(`¿Estás seguro de que quieres eliminar a ${listaPilotos[indice].nombre}?`);
-    
-    if(confirmacion) {
-        listaPilotos.splice(indice, 1); // Borramos 1 elemento de esa posición
-        pintarPilotos(); // Volvemos a pintar la tabla para que desaparezca
+    if(datosGuardados){
+        listaPilotos = JSON.parse(datosGuardados);
+        pintarPilotos();
     }
 }
 
+cargarPilotosDesdeLocalStorage();
 
 
 
 
 
-//  boton de editar
-    let botonesEditar = document.querySelectorAll(".btn-editar");
-    for(let i = 0; i < botonesEditar.length; i++) {
-        botonesEditar[i].addEventListener("click", function() {
-            let indice = this.getAttribute("data-id"); // Sacamos el número del piloto
-            editarPiloto(indice);
-        });
-    }
 
-// boton de liminar
-    let botonesEliminar = document.querySelectorAll(".btn-eliminar");
-    for(let i = 0; i < botonesEliminar.length; i++) {
-        botonesEliminar[i].addEventListener("click", function() {
-            let indice = this.getAttribute("data-id"); // Sacamos el número del piloto
-            eliminarPiloto(indice);
-        });
-    }
-*/
+
+
+
 

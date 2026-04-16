@@ -1,300 +1,200 @@
-/* ================= HEADER ================= */
+/*header*/
 
-#Hangar,
-#Pilotos,
-#Misiones,
-#Alianza {
+/*h1 del header */
+
+.titulo{
     font-size: 2.8vw;
-    color: white;
-    cursor: pointer;
-}
-
-header h1 {
+    color:rgb(255, 255, 255);
     margin-left: 70%;
 }
 
-header {
-    background-image: url("header.png");
+.tituloDestacado{
+    font-size: 3vw;
+    font-weight: bold;
+    color:rgb(155, 155, 155);
+    margin-left: 70%;
+}
+/*Alineacion del contenido,imagen y responsive del header*/
+
+header{
+    background-image:url("./imgStarWars/header.png") ;
     background-size: cover;
     background-position: top;
-    display: flex;
+    display:flex;
     flex-direction: column;
     gap: 2vw;
     min-height: 35vw;
     width: 100%;
 }
 
-/* ================= BODY ================= */
+/*todo el body*/
+
+/*clases para ocultar y ver secciones al cambier de seccion mediante js*/
+
+.oculto{
+    display: none;
+}
+
 
 body {
     margin: 0;
     padding: 0;
-    background-image: url("background.jpg");
+    background-image: url("./imgStarWars/background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-/* ================= SECCIONES ================= */
-
-.seccion {
-    display: none;
-    padding: 20px;
-}
-
-.activa {
-    display: block;
-}
-
-/* ================= SECCION 1 HANGAR ================= */
-
-.control {
+    background-position: center ;
+    background-size:cover;
     display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 25px;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-input, select, button {
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-}
+/*footer*/
 
-
-
-button {
-    background: #ffff00;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:hover {
-    background: #ffcc00;
-}
-
-#contador {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #00eaff;
-}
-
-.hangar {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));/*Ajusta el ancho depende del tamaño y hace que ninguna sea menor a 230 y estira para rellenar espacio*/
-    gap: 15px;
-}
-
-.card {
-    background: #1a2238;
-    border: 2px solid #2d3a5f;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.2s; /*para que sea mas limpio el aumento*/
-}
-
-.card:hover {
-    transform: scale(1.05);
+footer{
+    background-image: url("./imgStarWars/footer.jpg");
+    background-size: cover;
+    min-height: 60vw;
+    margin-top: auto;
+    width: 100%;
 }
 
 
 
-@media (max-width: 480px) {
+/*seccion 2 pilotos*/
 
-    h1 {
-        font-size: 22px;
-    }
-
-    .control {
-        gap: 10px;
-    }
-
-    input, select, button {
-        width: 100%;
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    #contador {
-        font-size: 14px;
-    }
-
-    .hangar {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        font-size: 14px;
-    }
-}
-
-/* ================= SECCION 2 PILOTOS ================= */
-
-.contenedorPrincipal {
+.contenedorPrincipal {/*con flex nos organizamos mejor*/
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 3vw;
-    margin-top: 5vw;
+    gap: 1.3vw;
+    margin-top: 15vw;
+    transform: translate(1.2vw);
 }
 
-#h1cuestionario {
-    color: white;
-    font-size: 5vw;
+
+#h1cuestionario{
+    color: rgb(255, 255, 255);
+    font-size: 8vw;
     text-align: center;
+    margin-bottom: -10vw;
 }
 
-.divFormulario {
-    background-color: black;
+.divFormulario {/*formulario responsive */
+    background-color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3vw;
     border-radius: 8vw;
-    width: 48vw;
+    width: 45vw; 
     border: 0.4vw solid red;
+    margin-left: 1.5vw;
 }
 
-.formularioPilotos {
-    display: flex;
+.formularioPilotos{
+    display:flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 4vw;
 }
 
-#soldado {
+.formularioPilotos input {/*input responsive*/
+    width: 28vw;
+    font-size: 2.3vw;
+    margin-right: 2vw;
+    border-radius: 2vw;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-width: 0.1vw;
+    padding-left: 1vw;
+}
+
+.formularioPilotos button {/*botones responsive*/
+    font-size: 1.8vw;
+    width: 18vw;
+    height: 3.5vw;
+    border-radius: 2vw;
+    border-width: 0.35vw;
+    transform: translate(5.5vw,1vw);
+}
+
+.formularioPilotos select{/*select responsive*/
+    font-size: 2vw;
+    width: 30vw;
+    border-radius: 1vw;
+    border-width: 0.3vw;
+    background-size: 2vw;
+}
+#soldado{/*al estar dentro de divformulario,solo le ajustamos el tamaño*/
     width: 20vw;
 }
 
-.divLista {
+.divLista {/*lista responsive en la que van los pilotos añadidos*/
     width: 38vw;
-    background-color: rgba(0,0,0,0.8);
-    border: 0.2vw solid white;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 0.2vw solid rgb(255, 255, 255);
     border-radius: 2vw;
     padding: 2vw;
+    color: rgb(248, 248, 248);
+    margin-right: 4vw;
+    height: 47.6vw;
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
+/*todo esto es para hacer la scrollbar y responsive*/
+.divLista::-webkit-scrollbar{
+    width: 1.5vw;
+}
+
+.divLista::-webkit-scrollbar-thumb {
+    background-color: #ff0000; 
+    border-radius: 2vw;       
+    border: 0.5vw solid #9c9c9c;   
+}
+
+.divLista::-webkit-scrollbar-track {
+    background: #1a1a1a;      
+}
+
+/*tabla responsive y mejora visual*/
 
 .divLista h2 {
     text-align: center;
+    margin-bottom: 2vw;
+    font-size: 4vw;
     color: red;
 }
 
 .tablaPilotos {
     width: 100%;
     border-collapse: collapse;
+    font-size: 1.6vw;
     text-align: center;
 }
 
-.btn-accion {
+.tablaPilotos th {
+    border-bottom: 0.2vw solid rgb(255, 0, 0);
+    padding: 0.5vw;
+}
+.tablaPilotos td {
+    padding: 0.5vw;
+    border-bottom: 0.1vw solid rgb(255, 0, 0);
+}
+
+.btn-accion {/*estos son los botones que se crean al añadir un piloto*/
     cursor: pointer;
-    font-size: 1vw;
-}
-
-
-/*SECCION 3 MISIONES*/
-
-body {
-    font-family: Arial;
-    background: #0b0f1a;
-    color: white;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    color: gold;
-}
-
-.form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-input, select, button {
-    padding: 8px;
-    border-radius: 8px;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    margin: 0.5vw;
     border: none;
+    width: 6vw;
+    border-style: solid;
+    border-color: red;
+    border-radius: 2vw;
+    border-width: 0.2vw;
+    transform: translate();
 }
 
-button {
-    background: gold;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.kanban {
-    display: flex;
-    gap: 15px;
-    justify-content: space-between;
-}
-
-.col {
-    flex:1;
-    background: #1a2238;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.card {
-    background: #2d3a5f;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-}
-
-.card button {
-    margin-top: 5px;
-    width: 100%;
-}
-
-@media (max-width: 480px) {
-
-    h1 {
-        font-size: 22px;
-    }
-
-    .form {
-        gap: 8px;
-    }
-
-    input, select, button {
-        width: 100%;
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .kanban {
-        gap: 10px;
-    }
-
-    .col {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .card {
-        font-size: 14px;
-    }
-
-    .card button {
-        font-size: 13px;
-    }
-}
-
-
-/* ================= FOOTER ================= */
-
-footer {
-    background-image: url("./imgStarWars/footer.jpg");
-    background-size: cover;
-    min-height: 20vw;
-}
