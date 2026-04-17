@@ -1,119 +1,260 @@
-//header
 
-//titulos del header
+//Titulos del header
+let t1 = document.getElementById("Hangar");
+let t2 = document.getElementById("Pilotos");
+let t3 = document.getElementById("Misiones");
+let t4 = document.getElementById("Alianza");
 
-let TituloSeccion1 = document.getElementById("Hangar");
+//Secciones del cuerpo
+let s1 = document.getElementById("seccion1");
+let s2 = document.getElementById("seccion2");
+let s3 = document.getElementById("seccion3");
+let s4 = document.getElementById("seccion4");
 
-let TituloSeccion2 = document.getElementById("Pilotos");
+function ocultarTodo() {
+    // Ocultamos todas las secciones
+    s1.classList.add("oculto");
+    s2.classList.add("oculto");
+    s3.classList.add("oculto");
+    s4.classList.add("oculto");
 
-let TituloSeccion3 = document.getElementById("Misiones");
+    // Quitamos el color rojo a todos los títulos
+    t1.classList.remove("tituloDestacado");
+    t2.classList.remove("tituloDestacado");
+    t3.classList.remove("tituloDestacado");
+    t4.classList.remove("tituloDestacado");
+}
 
-let TituloSeccion4 = document.getElementById("Alianza");
+// Funciones para cada titulo
+t1.addEventListener("click", function() {
+    ocultarTodo();
+    s1.classList.remove("oculto");
+    t1.classList.add("tituloDestacado");
+});
 
-//clases del div del cuerpo
+t2.addEventListener("click", function() {
+    ocultarTodo();
+    s2.classList.remove("oculto");
+    t2.classList.add("tituloDestacado");
+});
 
-let seccion1 = document.getElementById("seccion1");
+t3.addEventListener("click", function() {
+    ocultarTodo();
+    s3.classList.remove("oculto");
+    t3.classList.add("tituloDestacado");
+});
 
-let seccion2 = document.getElementById("seccion2");
-
-let seccion3 = document.getElementById("seccion3");
-
-let seccion4 = document.getElementById("seccion4");
-
-
-
-//funciones para que solo se muestre la seccion elegida elegida
-
-TituloSeccion1.addEventListener("click",function(){
-
-//secciones/contenidos
-seccion1.className="hangarNaves";
-
-seccion2.className="oculto";
-
-seccion3.className="oculto";
-
-seccion3.className="oculto";
-
-//titulos
-TituloSeccion1.className="tituloDestacado";//tituloDestacado
-
-TituloSeccion2.className="titulo";
-
-TituloSeccion3.className="titulo";
-
-TituloSeccion4.className="titulo";
-
-})
-
-
-
-TituloSeccion2.addEventListener("click",function(){
-
-seccion1.className="hangarNaves";
-
-seccion2.className="oculto";
-
-seccion3.className="oculto";
-
-seccion3.className="oculto";
-
-//titulos
-TituloSeccion1.className="titulo";
-
-TituloSeccion2.className="tituloDestacado";
-
-TituloSeccion3.className="titulo";
-
-TituloSeccion4.className="titulo";
-
-})
+t4.addEventListener("click", function() {
+    ocultarTodo();
+    s4.classList.remove("oculto");
+    t4.classList.add("tituloDestacado");
+});
 
 
 
-TituloSeccion3.addEventListener("click",function(){
-
-seccion1.className="hangarNaves";
-
-seccion2.className="oculto";
-
-seccion3.className="oculto";
-
-seccion3.className="oculto";
-
-//titulos
-TituloSeccion1.className="titulo";
-
-TituloSeccion2.className="titulo";
-
-TituloSeccion3.className="tituloDestacado";
-
-TituloSeccion4.className="titulo";
-
-})
 
 
 
-TituloSeccion4.addEventListener("click",function(){
 
-seccion1.className="hangarNaves";
 
-seccion2.className="oculto";
 
-seccion3.className="oculto";
 
-seccion3.className="oculto";
 
-//titulos
-TituloSeccion1.className="titulo";
 
-TituloSeccion2.className="titulo";
 
-TituloSeccion3.className="titulo";
 
-TituloSeccion4.className="tituloDestacado";
 
-})
+
+//seccion1
+
+const naves = [
+    {
+        nombre: "X-Wing",
+        tipo: "Caza",
+        emoji: "🚀",
+        velocidad: 105,
+        tripulacion: 1,
+        estado: "operativa",
+    },
+    {
+        nombre: "Millennium Falcon",
+        tipo: "Transporte",
+        emoji: "🛸",
+        velocidad: 120,
+        tripulacion: 6,
+        estado: "operativa",
+    },
+    {
+        nombre: "Y-Wing",
+        tipo: "Bombardero",
+        emoji: "💣",
+        velocidad: 85,
+        tripulacion: 2,
+        estado: "en reparación",
+    },
+    {
+        nombre: "A-Wing",
+        tipo: "Caza",
+        emoji: "🚀",
+        velocidad: 130,
+        tripulacion: 1,
+        estado: "operativa",
+    },
+    {
+        nombre: "Nebulon-B",
+        tipo: "Fragata",
+        emoji: "🚢",
+        velocidad: 70,
+        tripulacion: 850,
+        estado: "destruida",
+    }
+];
+
+let ordenAscendente = true;
+
+const buscador = document.getElementById("buscador");
+const filtroTipo = document.getElementById("filtroTipo");
+const ordenarBtn = document.getElementById("ordenarBtn");
+const contador = document.getElementById("contador");
+const hangar = document.getElementById("hangar");
+
+
+
+
+
+//mostrar las naves en la pagina
+   function mostrarNaves(lista) {
+    hangar.innerHTML = "";
+
+    for (let i = 0; i < lista.length; i++) {
+        hangar.innerHTML += `
+            <div class="card">
+                <h3>${lista[i].emoji} ${lista[i].nombre}</h3>
+                <p>Tipo: ${lista[i].tipo}</p>
+                <p>Velocidad: ${lista[i].velocidad}</p>
+                <p>Tripulación: ${lista[i].tripulacion}</p>
+                <p>${lista[i].estado}</p>
+            </div>
+        `;
+    }
+
+    contador.textContent = `Mostrando ${lista.length} naves`;
+}
+
+
+
+
+
+//bucador de naves por el nombre
+buscador.addEventListener("input", () => {
+    const texto = buscador.value.toLowerCase();
+
+    const resultado = naves.filter(nave =>
+        nave.nombre.toLowerCase().includes(texto)
+    );
+
+    mostrarNaves(resultado);
+});
+
+
+
+
+/* Recorre el array de naves y guarda solo aquellas cuyo nombre contiene
+ el texto escrito en el buscador.*/
+
+ //ordenar las naves por velocidad
+ ordenarBtn.addEventListener("click", () => {
+    if (ordenAscendente) {
+        naves.sort((a, b) => a.velocidad - b.velocidad);
+        ordenarBtn.textContent = "Ordenar por velocidad ↑";
+
+    } else {
+        naves.sort((a, b) => b.velocidad - a.velocidad);
+        ordenarBtn.textContent = "Ordenar por velocidad ↓";
+
+    }
+
+    ordenAscendente = !ordenAscendente;
+
+    mostrarNaves(naves);
+});
+
+// Al pulsar el botón cambia entre orden ascendente y descendente y vuelve a mostrar las naves ordenadas
+
+//tipos de naves que hay 
+function cargarTipos() {
+    let tipos = [];
+
+    for (let i = 0; i < naves.length; i++) {
+        if (!tipos.includes(naves[i].tipo)) { //por si hay repetidos
+            tipos.push(naves[i].tipo);
+        }
+    }
+
+    for (let i = 0; i < tipos.length; i++) {
+        const option = document.createElement("option");
+        option.value = tipos[i];
+        option.textContent = tipos[i];
+        filtroTipo.appendChild(option);
+    }
+}
+
+
+
+//filtrar por el tipo de nave
+function filtrarPorTipo() {
+    const tipo = filtroTipo.value.toLowerCase();
+
+    let resultado = naves;
+
+    if (tipo !== "todos") {
+        resultado = naves.filter(nave =>
+            nave.tipo.toLowerCase() === tipo
+        );
+    }
+
+    mostrarNaves(resultado);
+}
+filtroTipo.addEventListener("change", filtrarPorTipo);
+
+
+
+
+//contador dinamico de cuantas naves hay
+contador.textContent = `Mostrando ${naves.length} naves`;
+
+
+
+cargarTipos();
+mostrarNaves(naves);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //seccion 2
@@ -270,6 +411,253 @@ function cargarPilotosDesdeLocalStorage(){//esto sirve para persistir los piloto
 }
 
 cargarPilotosDesdeLocalStorage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//seccion 3
+
+
+let listaMisiones = JSON.parse(localStorage.getItem("misiones")) || [];
+
+// elementos
+const addBtn = document.getElementById("addBtn");
+const filtroDificultad = document.getElementById("filtroDificultad");
+
+const inputNombreMision = document.getElementById("nombre");
+const inputDescripcion = document.getElementById("descripcion");
+const selectPiloto = document.getElementById("piloto");
+const selectDificultad = document.getElementById("dificultad");
+
+// columnas
+const colPendiente = document.getElementById("pendiente");
+const colCurso = document.getElementById("curso");
+const colCompletada = document.getElementById("completada");
+
+// contadores
+const contPendiente = document.getElementById("Pendiente");
+const contCurso = document.getElementById("Curso");
+const contCompletada = document.getElementById("Completada");
+
+
+// solo pilotos NO KIA
+function cargarPilotos() {
+    selectPiloto.innerHTML = `<option value="">Selecciona piloto</option>`;
+
+    for (let i = 0; i < listaPilotos.length; i++) {
+        if (listaPilotos[i].estado !== "KIA") {
+            let opt = document.createElement("option");
+            opt.value = listaPilotos[i].nombre;
+            opt.textContent = listaPilotos[i].nombre;
+            selectPiloto.appendChild(opt);
+        }
+    }
+}
+
+
+//CREAR MISION 
+
+addBtn.addEventListener("click", function () {
+
+    let mision = {
+        nombre: inputNombreMision.value.trim(),
+        descripcion: inputDescripcion.value.trim(),
+        piloto: selectPiloto.value,
+        dificultad: selectDificultad.value,
+        estado: "pendiente",
+        fecha: new Date().toLocaleDateString()
+    };
+
+    if (
+        mision.nombre === "" ||
+        mision.descripcion === "" ||
+        mision.piloto === ""
+    ) {
+        alert("Rellena todo");
+        return;
+    }
+
+    listaMisiones.push(mision);
+
+    guardarMisiones();
+    pintarMisiones();
+
+    inputNombreMision.value = "";
+    inputDescripcion.value = "";
+});
+
+
+//MOVER MISION 
+
+function moverMision(index) {
+
+    if (listaMisiones[index].estado === "pendiente") {
+        listaMisiones[index].estado = "curso";
+    }
+    else if (listaMisiones[index].estado === "curso") {
+        listaMisiones[index].estado = "completada";
+    }
+
+    guardarMisiones();
+    pintarMisiones();
+}
+
+
+//ELIMINAR MISION 
+
+function eliminarMision(index) {
+    listaMisiones.splice(index, 1);
+    guardarMisiones();
+    pintarMisiones();
+}
+
+
+//PINTAR KANBAN 
+
+function pintarMisiones() {
+
+    colPendiente.innerHTML = "";
+    colCurso.innerHTML = "";
+    colCompletada.innerHTML = "";
+
+    let pendientes = 0;
+    let curso = 0;
+    let completadas = 0;
+
+    let filtro = filtroDificultad.value;
+
+    for (let i = 0; i < listaMisiones.length; i++) {
+
+        let misiones = listaMisiones[i];
+        let filtro = filtroDificultad.value.toLowerCase();
+        let dificultad = misiones.dificultad.toLowerCase();
+
+if (filtro !== "todos" && dificultad !== filtro) continue;
+
+        let card = `
+            <div class="card">
+                <h3>${misiones.nombre}</h3>
+                <p>${misiones.descripcion}</p>
+                <p>Piloto: ${misiones.piloto}</p>
+                <p>Dificultad: ${misiones.dificultad}</p>
+                <p>${misiones.fecha}</p>
+
+                <button onclick="moverMision(${i})">Mover</button>
+                <button onclick="eliminarMision(${i})">Eliminar</button>
+            </div>
+        `;
+
+        if (misiones.estado === "pendiente") {
+            colPendiente.innerHTML += card;
+            pendientes++;
+        }
+        else if (misiones.estado === "curso") {
+            colCurso.innerHTML += card;
+            curso++;
+        }
+        else if (misiones.estado === "completada") {
+            colCompletada.innerHTML += card;
+            completadas++;
+        }
+    }
+
+    contPendiente.textContent = pendientes;
+    contCurso.textContent = curso;
+    contCompletada.textContent = completadas;
+
+    guardarMisiones();
+}
+
+
+//FILTRO 
+
+filtroDificultad.addEventListener("change", pintarMisiones);
+
+
+//LOCALSTORAGE 
+
+function guardarMisiones() {
+    localStorage.setItem("misiones", JSON.stringify(listaMisiones));
+}
+
+
+cargarPilotos();
+pintarMisiones();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//seccion 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
