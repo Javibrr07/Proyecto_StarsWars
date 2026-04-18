@@ -2,171 +2,90 @@
 <html lang="en">
 
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>
-        Registro de pilotos
-    </title>
-
+    <title>Registro de pilotos</title>
     <link rel="stylesheet" href="estilos.css">
-    
 </head>
 
 <body>
-    
 
-<!--HEADER-->
+<header>
+    <h1 class="titulo" id="Hangar">Hangar de naves</h1>
+    <h1 class="titulo" id="Pilotos">Registro de pilotos</h1>
+    <h1 class="titulo" id="Misiones">Panel de misiones</h1>
+    <h1 class="titulo" id="Alianza">Mando de la alianza</h1>
+</header>
 
+<main>
 
-    <header>
-
-        <h1 class="titulo" id = "Hangar">Hangar de naves</h1>
-
-        <h1 class="titulo" id = "Pilotos">Registro de pilotos</h1>
-
-        <h1 class="titulo" id = "Misiones" >Panel de misiones</h1>
-
-        <h1 class="titulo" id = "Alianza">Mando de la alianza</h1>
-        
-    </header>
-
-
-    <main>
-
-
-
-
-
-
-<!--Seccion 1 HANGAR DE NAVES -->
-
-<div id="seccion1">
-
-     <h1>🚀 Hangar de Naves Rebelde</h1>
+<div id="seccion1" class="seccion">
+    <h1>🚀 Hangar de Naves Rebelde</h1>
 
     <div class="control">
         <input type="text" id="buscador" placeholder="Buscar nave por nombre...">
-
         <select id="filtroTipo">
             <option value="todos">Todos los tipos</option>
         </select>
-
         <button id="ordenarBtn">Ordenar por velocidad ↑</button>
     </div>
 
     <div id="contador">Mostrando 0 naves</div>
-
     <div class="hangar" id="hangar"></div>
-
 </div>
 
-
-
-
-
-
-
-<!--Seccion 2 REGISTRO PILOTOS  -->
-
-
-   <div id = "seccion2" class="registroPilotos">
+<div id="seccion2" class="seccion oculto registroPilotos">
 
     <h1 id="h1cuestionario">Registre su piloto</h1>
 
     <div class="contenedorPrincipal">
 
-
         <div class="divFormulario">
-
             <img id="soldado" src="./imgStarWars/soldado.png">
 
             <form id="formularioPilotos" class="formularioPilotos">
-
-
                 <input type="text" id="inputNombre" required placeholder="Nombre del piloto:">
-
                 <input type="text" id="inputRango" required placeholder="Rango:">
-
                 <input type="number" id="inputVictorias" required placeholder="Número de victorias:" min="0">
 
                 <select id="selectNave" required>
-
                     <option value="" disabled selected>Nave asignada:</option>
-
                 </select>
 
                 <select id="selectEstado" required>
-
                     <option value="" disabled selected>Estado del piloto:</option>
-
                     <option value="Activo">Activo</option>
-
                     <option value="Herido">Herido</option>
-
                     <option value="KIA">KIA</option>
-
                 </select>
 
                 <button id="guardarPiloto">Guardar piloto</button>
-
-
             </form>
-
-
         </div>
 
         <div class="divLista">
-
             <h2>Flota Registrada</h2>
 
             <table class="tablaPilotos">
-
                 <thead>
-
                     <tr>
-
                         <th>Piloto</th>
-
                         <th>Rango</th>
-
                         <th>Victorias</th>
-
                         <th>Nave</th>
-
                         <th>Estado</th>
-
                         <th></th>
-                        
                     </tr>
-
                 </thead>
-
-                <tbody id="cuerpoTablaPilotos">
-
-                    </tbody>
-
+                <tbody id="cuerpoTablaPilotos"></tbody>
             </table>
-
-
         </div>
 
     </div>
-
-
 </div>
 
+<div id="seccion3" class="seccion oculto">
 
-
-
-
-
-
-
-<!--Sección 3 PANEL DE MISIONES-->
-
-<div id="seccion3" class="oculto">
     <h1>📋 Centro de Operaciones: Misiones</h1>
 
     <div class="mision-form">
@@ -174,7 +93,7 @@
             <input type="text" id="nombreMision" placeholder="Nombre de la misión">
             <input type="text" id="descMision" placeholder="Objetivo/Descripción">
         </div>
-        
+
         <div class="input-group">
             <select id="selectPilotoMision">
                 <option value="">Cargando pilotos...</option>
@@ -186,6 +105,7 @@
                 <option value="dificil">Nivel: Difícil</option>
                 <option value="suicida">Nivel: SUICIDA</option>
             </select>
+
             <button id="addMisionBtn">Asignar Misión</button>
         </div>
     </div>
@@ -202,68 +122,75 @@
     </div>
 
     <div class="kanban-board">
-        <div class="kanban-col" id="col-pendiente">
+        <div class="kanban-col">
             <div class="col-header">PENDIENTE <span id="count-pendiente">0</span></div>
-            <div class="misiones-lista" id="lista-pendiente"></div>
+            <div id="lista-pendiente"></div>
         </div>
 
-        <div class="kanban-col" id="col-curso">
+        <div class="kanban-col">
             <div class="col-header header-curso">EN CURSO <span id="count-curso">0</span></div>
-            <div class="misiones-lista" id="lista-curso"></div>
+            <div id="lista-curso"></div>
         </div>
 
-        <div class="kanban-col" id="col-completada">
+        <div class="kanban-col">
             <div class="col-header header-completada">COMPLETADA <span id="count-completada">0</span></div>
-            <div class="misiones-lista" id="lista-completada"></div>
+            <div id="lista-completada"></div>
         </div>
     </div>
 </div>
 
+<div id="seccion4" class="seccion oculto">
 
+    <div class="tarjetas">
+        <h3>Nuestros pilotos</h3>
+        <ul>
+            <li>Activos: <span id="activos"></span></li>
+            <li>Heridos: <span id="heridos"></span></li>
+            <li>KIA: <span id="KIA"></span></li>
+            
+        </ul>
+        <img src="imgStarWars/piloto.png" id="imagenPiloto">
+    </div>
 
+    <div class="tarjetas">
+        <h3>Nuestras naves</h3>
+        <ul>
+            <li>Operativas: <span id="Operativas"></span></li>
+            <li>En reparación: <span id="reparacion"></span></li>
+            <li>Destruidas: <span id="destruidas"></span></li>
+        </ul>
+        <img src="imgStarWars/nave.png" id="imagenNave">
+    </div>
 
+    <div class="tarjetas">
+        <h3>Misiones de  flota</h3>
+        <ul>
+            <li>Pendientes: <span id="pendientes"></span></li>
+            <li>En curso: <span id="EnCurso"></span></li>
+            <li>Completadas: <span id="completadas"></span></li>
+        </ul>
+        <img src="imgStarWars/imagenBB8.png" id="imagenBB8">
+    </div>
 
+      <div class="tarjetas">
+        <h3>Datos destacados</h3>
+        <ul>
+            <li>Piloto estrella: <span id="pilotoTop"></span></li>
+            <li>Nave más rápida: <span id="naveTop"></span></li>
+            <li>Progreso misiones:</li>
+                <div class="barra">
+                    <div id="barraProgreso"></div>
+                </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Sección 4 MANDO DE LA ALIANZA-->
-
-<div id="seccion4">
+                <p id="textoProgreso"></p>
+        </ul>
+        <img src="imgStarWars/joda.png" id="imagenJoda">
+    </div>
 
 </div>
 
-    </main>
+</main>
 
-
-<!--FOOTER-->
-
-
-    <footer>
-
-        
-    </footer>
-
-
-    <script src="java.js"></script>
-
-
+<script src="java.js"></script>
 </body>
 </html>

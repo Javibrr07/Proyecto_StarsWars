@@ -1,31 +1,27 @@
-
-//Titulos del header
+// Títulos del header
 let t1 = document.getElementById("Hangar");
 let t2 = document.getElementById("Pilotos");
 let t3 = document.getElementById("Misiones");
 let t4 = document.getElementById("Alianza");
 
-//Secciones del cuerpo
+// Secciones del cuerpo
 let s1 = document.getElementById("seccion1");
 let s2 = document.getElementById("seccion2");
 let s3 = document.getElementById("seccion3");
 let s4 = document.getElementById("seccion4");
 
 function ocultarTodo() {
-    // Ocultamos todas las secciones
     s1.classList.add("oculto");
     s2.classList.add("oculto");
     s3.classList.add("oculto");
     s4.classList.add("oculto");
 
-    // Quitamos el color rojo a todos los títulos
     t1.classList.remove("tituloDestacado");
     t2.classList.remove("tituloDestacado");
     t3.classList.remove("tituloDestacado");
     t4.classList.remove("tituloDestacado");
 }
 
-// Funciones para cada titulo
 t1.addEventListener("click", function() {
     ocultarTodo();
     s1.classList.remove("oculto");
@@ -48,66 +44,18 @@ t4.addEventListener("click", function() {
     ocultarTodo();
     s4.classList.remove("oculto");
     t4.classList.add("tituloDestacado");
+    actualizarDashboard(); // AÑADIDO: Ahora se actualiza al entrar a la sección
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//seccion1
+/* SECCIÓN 1: HANGAR DE NAVES
+*/
 
 const naves = [
-    {
-        nombre: "X-Wing",
-        tipo: "Caza",
-        emoji: "🚀",
-        velocidad: 105,
-        tripulacion: 1,
-        estado: "operativa",
-    },
-    {
-        nombre: "Millennium Falcon",
-        tipo: "Transporte",
-        emoji: "🛸",
-        velocidad: 120,
-        tripulacion: 6,
-        estado: "operativa",
-    },
-    {
-        nombre: "Y-Wing",
-        tipo: "Bombardero",
-        emoji: "💣",
-        velocidad: 85,
-        tripulacion: 2,
-        estado: "en reparación",
-    },
-    {
-        nombre: "A-Wing",
-        tipo: "Caza",
-        emoji: "🚀",
-        velocidad: 130,
-        tripulacion: 1,
-        estado: "operativa",
-    },
-    {
-        nombre: "Nebulon-B",
-        tipo: "Fragata",
-        emoji: "🚢",
-        velocidad: 70,
-        tripulacion: 850,
-        estado: "destruida",
-    }
+    { nombre: "X-Wing", tipo: "Caza", emoji: "🚀", velocidad: 105, tripulacion: 1, estado: "operativa" },
+    { nombre: "Millennium Falcon", tipo: "Transporte", emoji: "🛸", velocidad: 120, tripulacion: 6, estado: "operativa" },
+    { nombre: "Y-Wing", tipo: "Bombardero", emoji: "💣", velocidad: 85, tripulacion: 2, estado: "en reparación" },
+    { nombre: "A-Wing", tipo: "Caza", emoji: "🚀", velocidad: 130, tripulacion: 1, estado: "operativa" },
+    { nombre: "Nebulon-B", tipo: "Fragata", emoji: "🚢", velocidad: 70, tripulacion: 850, estado: "destruida" }
 ];
 
 let ordenAscendente = true;
@@ -118,14 +66,8 @@ const ordenarBtn = document.getElementById("ordenarBtn");
 const contador = document.getElementById("contador");
 const hangar = document.getElementById("hangar");
 
-
-
-
-
-//mostrar las naves en la pagina
-   function mostrarNaves(lista) {
+function mostrarNaves(lista) {
     hangar.innerHTML = "";
-
     for (let i = 0; i < lista.length; i++) {
         hangar.innerHTML += `
             <div class="card">
@@ -137,60 +79,34 @@ const hangar = document.getElementById("hangar");
             </div>
         `;
     }
-
     contador.textContent = `Mostrando ${lista.length} naves`;
 }
 
-
-
-
-
-//bucador de naves por el nombre
 buscador.addEventListener("input", () => {
     const texto = buscador.value.toLowerCase();
-
-    const resultado = naves.filter(nave =>
-        nave.nombre.toLowerCase().includes(texto)
-    );
-
+    const resultado = naves.filter(nave => nave.nombre.toLowerCase().includes(texto));
     mostrarNaves(resultado);
 });
 
-
-
-
-/* Recorre el array de naves y guarda solo aquellas cuyo nombre contiene
- el texto escrito en el buscador.*/
-
- //ordenar las naves por velocidad
- ordenarBtn.addEventListener("click", () => {
+ordenarBtn.addEventListener("click", () => {
     if (ordenAscendente) {
         naves.sort((a, b) => a.velocidad - b.velocidad);
         ordenarBtn.textContent = "Ordenar por velocidad ↑";
-
     } else {
         naves.sort((a, b) => b.velocidad - a.velocidad);
         ordenarBtn.textContent = "Ordenar por velocidad ↓";
-
     }
-
     ordenAscendente = !ordenAscendente;
-
     mostrarNaves(naves);
 });
 
-// Al pulsar el botón cambia entre orden ascendente y descendente y vuelve a mostrar las naves ordenadas
-
-//tipos de naves que hay 
 function cargarTipos() {
     let tipos = [];
-
     for (let i = 0; i < naves.length; i++) {
-        if (!tipos.includes(naves[i].tipo)) { //por si hay repetidos
+        if (!tipos.includes(naves[i].tipo)) { 
             tipos.push(naves[i].tipo);
         }
     }
-
     for (let i = 0; i < tipos.length; i++) {
         const option = document.createElement("option");
         option.value = tipos[i];
@@ -199,174 +115,79 @@ function cargarTipos() {
     }
 }
 
-
-
-//filtrar por el tipo de nave
 function filtrarPorTipo() {
     const tipo = filtroTipo.value.toLowerCase();
-
     let resultado = naves;
-
     if (tipo !== "todos") {
-        resultado = naves.filter(nave =>
-            nave.tipo.toLowerCase() === tipo
-        );
+        resultado = naves.filter(nave => nave.tipo.toLowerCase() === tipo);
     }
-
     mostrarNaves(resultado);
 }
+
 filtroTipo.addEventListener("change", filtrarPorTipo);
 
-
-
-
-//contador dinamico de cuantas naves hay
-contador.textContent = `Mostrando ${naves.length} naves`;
-
-
-
-cargarTipos();
-mostrarNaves(naves);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//seccion 2
-
-
-const listaNaves = ["X-Wing", "Y-Wing", "A-Wing", "Halcón Milenario", "Caza"];//crear un array de naves para la seccion de nave asignada y asignarlo
+/*
+ SECCIÓN 2: REGISTRO DE PILOTOS
+*/
+const listaNaves = ["X-Wing", "Y-Wing", "A-Wing", "Halcón Milenario", "Caza"];
 
 function cargarNaves(){
-
     const select = document.getElementById("selectNave");
-
-    for(let i = 0; i<listaNaves.length; i++){
-    
+    for(let i = 0; i < listaNaves.length; i++){
         let opcion = document.createElement("option");
-
         opcion.textContent = listaNaves[i];
-
         opcion.value = listaNaves[i];
-
         select.appendChild(opcion);
     }
 }
 
-cargarNaves();//ejecutamos la funcion,así,al cargar la pagina,apareceran las naves en el el select de nave asignada
-
-
-
-
-
-
-
-
-let listaPilotos = [];//esta vacio pues no hay ningun piloto hasta que se añada uno
-
+let listaPilotos = [];
 let btnGuardarPiloto = document.getElementById("guardarPiloto");
+let indiceEditando = -1;
 
-let indiceEditando = -1;// -1 significa "Creando nuevo piloto". Otro número significa "Editando".
-
-
-
-
-
-
-function pintarPilotos() {//funcion para añadir los pilotos a la tabla
-
+function pintarPilotos() {
     const tbody = document.getElementById("cuerpoTablaPilotos");
-
-     tbody.innerHTML = "";//al limpiar la tabla,se imprimira toda la lista
-
-      for(let i = 0; i < listaPilotos.length; i++){
-
-          let piloto = listaPilotos[i];
-          let fila = document.createElement("tr");//creamos fila
-  
-          //creamos cada columna con su valor(y los botones asociados)
-          fila.innerHTML = `
-              <td>${piloto.nombre}</td>
-              <td>${piloto.rango}</td>
-              <td>${piloto.victorias}</td>
-              <td>${piloto.nave}</td>
-              <td>${piloto.estado}</td>
-              <td>
-                  <button class="btn-accion"  onclick="editarPiloto(${i})" >editar</button>
-                  <button class="btn-accion"  onclick="borrarPiloto(${i})" >borrar</button>
-              </td>
-          `;
-  
-          tbody.appendChild(fila);//lo añadimos al body de la tabla
-
-      }
-    
-}
-
-
-
-
-
-function borrarPiloto(i){//funcion para borrar piloto
-
-    let confirmar = confirm("¿Eliminar piloto?");
-
-    if(confirmar){
-        listaPilotos.splice(i,1);//borrar del array
-        localStorage.setItem("pilotos", JSON.stringify(listaPilotos));//borrar del local storage(si no, no sirve de nada borrar del array)
-        pintarPilotos();//pintar la nueva lista con un piloto menos
+    tbody.innerHTML = "";
+    for(let i = 0; i < listaPilotos.length; i++){
+        let piloto = listaPilotos[i];
+        let fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${piloto.nombre}</td>
+            <td>${piloto.rango}</td>
+            <td>${piloto.victorias}</td>
+            <td>${piloto.nave}</td>
+            <td>${piloto.estado}</td>
+            <td>
+                <button class="btn-accion" onclick="editarPiloto(${i})">editar</button>
+                <button class="btn-accion" onclick="borrarPiloto(${i})">borrar</button>
+            </td>
+        `;
+        tbody.appendChild(fila);
     }
 }
 
+function borrarPiloto(i){
+    let confirmar = confirm("¿Eliminar piloto?");
+    if(confirmar){
+        listaPilotos.splice(i,1);
+        localStorage.setItem("pilotos", JSON.stringify(listaPilotos));
+        pintarPilotos();
+    }
+}
 
-function editarPiloto(i){//funcion para editar el piloto
-
+function editarPiloto(i){
     let piloto = listaPilotos[i];
-
     document.getElementById("inputNombre").value = piloto.nombre;
     document.getElementById("inputRango").value = piloto.rango;
     document.getElementById("inputVictorias").value = piloto.victorias;
     document.getElementById("selectNave").value = piloto.nave;
     document.getElementById("selectEstado").value = piloto.estado;
-
-    indiceEditando = i; // se actualiza,por lo que ya no es -1
-
+    indiceEditando = i; 
     btnGuardarPiloto.textContent = "Actualizar piloto";
 }
 
-
-
-
-
-btnGuardarPiloto.addEventListener("click",function(event){//funcion para guardar un piloto en el array de pilotos
-
-    event.preventDefault();//Esto evita que la página se recargue y se pierdan los datos
-
+btnGuardarPiloto.addEventListener("click", function(event){
+    event.preventDefault();
     let nombre = document.getElementById("inputNombre").value;
     let rango = document.getElementById("inputRango").value;
     let victorias = parseInt(document.getElementById("inputVictorias").value);
@@ -375,91 +196,56 @@ btnGuardarPiloto.addEventListener("click",function(event){//funcion para guardar
 
     if(nombre === "" || rango === "" || isNaN(victorias) || victorias < 0 || nave === "" || estado === "") {
         alert("Error: Por favor, rellena todos los campos correctamente. Las victorias deben ser positivas.");
-        return; // Detiene la ejecución si hay error
+        return; 
     }
    
-    const piloto = {//este es el piloto
-        nombre: nombre,
-        rango: rango,
-        victorias: victorias,
-        nave: nave,
-        estado: estado
-    };
-
+    const piloto = { nombre: nombre, rango: rango, victorias: victorias, nave: nave, estado: estado };
 
     if (indiceEditando === -1) {
-        listaPilotos.push(piloto); // Creamos y añadimos
+        listaPilotos.push(piloto); 
     } else {
-        listaPilotos[indiceEditando] = piloto; // editamos
-        indiceEditando = -1; // Reiniciamos el estado
+        listaPilotos[indiceEditando] = piloto; 
+        indiceEditando = -1; 
         btnGuardarPiloto.textContent = "Guardar piloto";
     }
 
-    localStorage.setItem("pilotos", JSON.stringify(listaPilotos));//guardamos en local storage
+    localStorage.setItem("pilotos", JSON.stringify(listaPilotos));
+    pintarPilotos();
     
-    pintarPilotos();//al llamar a pintarPilotos,se añade a la tabla
-})
+    // Limpiar formulario tras guardar
+    document.getElementById("formularioPilotos").reset();
+});
 
-
-function cargarPilotosDesdeLocalStorage(){//esto sirve para persistir los pilotos en la local storage
+function cargarPilotosDesdeLocalStorage(){
     let datosGuardados = localStorage.getItem("pilotos");
-
     if(datosGuardados){
         listaPilotos = JSON.parse(datosGuardados);
         pintarPilotos();
     }
 }
 
-cargarPilotosDesdeLocalStorage();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//seccion 3
-
-
+/* SECCIÓN 3: PANEL DE MISIONES
+*/
 let listaMisiones = JSON.parse(localStorage.getItem("misiones")) || [];
 
-// elementos
-const addBtn = document.getElementById("addBtn");
+const addBtn = document.getElementById("addMisionBtn");
 const filtroDificultad = document.getElementById("filtroDificultad");
 
-const inputNombreMision = document.getElementById("nombre");
-const inputDescripcion = document.getElementById("descripcion");
-const selectPiloto = document.getElementById("piloto");
-const selectDificultad = document.getElementById("dificultad");
+const inputNombreMision = document.getElementById("nombreMision");
+const inputDescripcion = document.getElementById("descMision");
+const selectPiloto = document.getElementById("selectPilotoMision");
+const selectDificultad = document.getElementById("selectDificultadMision");
 
-// columnas
-const colPendiente = document.getElementById("pendiente");
-const colCurso = document.getElementById("curso");
-const colCompletada = document.getElementById("completada");
+const colPendiente = document.getElementById("lista-pendiente");
+const colCurso = document.getElementById("lista-curso");
+const colCompletada = document.getElementById("lista-completada");
 
-// contadores
-const contPendiente = document.getElementById("Pendiente");
-const contCurso = document.getElementById("Curso");
-const contCompletada = document.getElementById("Completada");
+const contPendiente = document.getElementById("count-pendiente");
+const contCurso = document.getElementById("count-curso");
+const contCompletada = document.getElementById("count-completada");
 
-
-// solo pilotos NO KIA
 function cargarPilotos() {
     selectPiloto.innerHTML = `<option value="">Selecciona piloto</option>`;
-
     for (let i = 0; i < listaPilotos.length; i++) {
         if (listaPilotos[i].estado !== "KIA") {
             let opt = document.createElement("option");
@@ -470,11 +256,7 @@ function cargarPilotos() {
     }
 }
 
-
-//CREAR MISION 
-
 addBtn.addEventListener("click", function () {
-
     let mision = {
         nombre: inputNombreMision.value.trim(),
         descripcion: inputDescripcion.value.trim(),
@@ -484,17 +266,12 @@ addBtn.addEventListener("click", function () {
         fecha: new Date().toLocaleDateString()
     };
 
-    if (
-        mision.nombre === "" ||
-        mision.descripcion === "" ||
-        mision.piloto === ""
-    ) {
+    if (mision.nombre === "" || mision.descripcion === "" || mision.piloto === "") {
         alert("Rellena todo");
         return;
     }
 
     listaMisiones.push(mision);
-
     guardarMisiones();
     pintarMisiones();
 
@@ -502,24 +279,16 @@ addBtn.addEventListener("click", function () {
     inputDescripcion.value = "";
 });
 
-
-//MOVER MISION 
-
 function moverMision(index) {
-
     if (listaMisiones[index].estado === "pendiente") {
         listaMisiones[index].estado = "curso";
     }
     else if (listaMisiones[index].estado === "curso") {
         listaMisiones[index].estado = "completada";
     }
-
     guardarMisiones();
     pintarMisiones();
 }
-
-
-//ELIMINAR MISION 
 
 function eliminarMision(index) {
     listaMisiones.splice(index, 1);
@@ -527,11 +296,7 @@ function eliminarMision(index) {
     pintarMisiones();
 }
 
-
-//PINTAR KANBAN 
-
 function pintarMisiones() {
-
     colPendiente.innerHTML = "";
     colCurso.innerHTML = "";
     colCompletada.innerHTML = "";
@@ -540,38 +305,35 @@ function pintarMisiones() {
     let curso = 0;
     let completadas = 0;
 
-    let filtro = filtroDificultad.value;
+    let filtro = filtroDificultad.value.toLowerCase();
 
     for (let i = 0; i < listaMisiones.length; i++) {
+        let mision = listaMisiones[i];
+        let dificultad = mision.dificultad.toLowerCase();
 
-        let misiones = listaMisiones[i];
-        let filtro = filtroDificultad.value.toLowerCase();
-        let dificultad = misiones.dificultad.toLowerCase();
-
-if (filtro !== "todos" && dificultad !== filtro) continue;
+        if (filtro !== "todos" && dificultad !== filtro) continue;
 
         let card = `
-            <div class="card">
-                <h3>${misiones.nombre}</h3>
-                <p>${misiones.descripcion}</p>
-                <p>Piloto: ${misiones.piloto}</p>
-                <p>Dificultad: ${misiones.dificultad}</p>
-                <p>${misiones.fecha}</p>
-
-                <button onclick="moverMision(${i})">Mover</button>
+            <div class="mision-card">
+                <h3>${mision.nombre}</h3>
+                <p>${mision.descripcion}</p>
+                <p>Piloto: ${mision.piloto}</p>
+                <p>Dificultad: ${mision.dificultad}</p>
+                <p>${mision.fecha}</p>
+                <button class="btn-mover" onclick="moverMision(${i})">Mover</button>
                 <button onclick="eliminarMision(${i})">Eliminar</button>
             </div>
         `;
 
-        if (misiones.estado === "pendiente") {
+        if (mision.estado === "pendiente") {
             colPendiente.innerHTML += card;
             pendientes++;
         }
-        else if (misiones.estado === "curso") {
+        else if (mision.estado === "curso") {
             colCurso.innerHTML += card;
             curso++;
         }
-        else if (misiones.estado === "completada") {
+        else if (mision.estado === "completada") {
             colCompletada.innerHTML += card;
             completadas++;
         }
@@ -584,87 +346,125 @@ if (filtro !== "todos" && dificultad !== filtro) continue;
     guardarMisiones();
 }
 
-
-//FILTRO 
-
 filtroDificultad.addEventListener("change", pintarMisiones);
-
-
-//LOCALSTORAGE 
 
 function guardarMisiones() {
     localStorage.setItem("misiones", JSON.stringify(listaMisiones));
 }
 
-
-cargarPilotos();
-pintarMisiones();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//seccion 4
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* =========================================================================
+   4. INICIALIZACIÓN (Lo que ocurre al abrir la página)
+   ========================================================================= */
+function iniciarAplicacion() {
+    // 1. Mostrar la sección 2 por defecto al abrir el navegador
+    ocultarTodo();
+    s4.classList.remove("oculto");
+    t4.classList.add("tituloDestacado");
+
+    // 2. Cargar todos los datos dinámicos
+    cargarTipos();
+    mostrarNaves(naves);
+    cargarNaves();
+    cargarPilotosDesdeLocalStorage();
+    cargarPilotos();
+    pintarMisiones();
+    actualizarDashboard(); // AÑADIDO: para que cargue los datos si empieza en la sección 4
+}
+
+iniciarAplicacion();
+
+function actualizarDashboard() {
+    // ======================
+    // PILOTOS
+    // ======================
+    let activos = 0;
+    let heridos = 0;
+    let kia = 0;
+
+    for (let i = 0; i < listaPilotos.length; i++) {
+        if (listaPilotos[i].estado === "Activo") activos++;
+        else if (listaPilotos[i].estado === "Herido") heridos++;
+        else if (listaPilotos[i].estado === "KIA") kia++;
+    }
+
+    document.getElementById("activos").textContent = activos;
+    document.getElementById("heridos").textContent = heridos;
+    document.getElementById("KIA").textContent = kia;
+
+    // ======================
+    // NAVES
+    // ======================
+    let operativas = 0;
+    let reparacion = 0;
+    let destruidas = 0;
+
+    for (let i = 0; i < naves.length; i++) {
+        if (naves[i].estado === "operativa") operativas++;
+        else if (naves[i].estado === "en reparación") reparacion++;
+        else if (naves[i].estado === "destruida") destruidas++;
+    }
+
+    document.getElementById("Operativas").textContent = operativas;
+    document.getElementById("reparacion").textContent = reparacion;
+    document.getElementById("destruidas").textContent = destruidas;
+    
+    // ======================
+    // MISIONES
+    // ======================
+    let pendientes = 0;
+    let enCurso = 0;
+    let completadas = 0;
+
+    for (let i = 0; i < listaMisiones.length; i++) {
+        if (listaMisiones[i].estado === "pendiente") pendientes++;
+        else if (listaMisiones[i].estado === "curso") enCurso++;
+        else if (listaMisiones[i].estado === "completada") completadas++;
+    }
+
+    document.getElementById("pendientes").textContent = pendientes;
+    document.getElementById("EnCurso").textContent = enCurso;
+    document.getElementById("completadas").textContent = completadas;
+
+    // ======================
+    // MEJOR PILOTO 
+    // ======================
+    let mejor = null;
+
+    for (let i = 0; i < listaPilotos.length; i++) {
+        if (mejor === null || listaPilotos[i].victorias > mejor.victorias) {
+            mejor = listaPilotos[i];
+        }
+    }
+
+    if (mejor !== null) {
+        document.getElementById("pilotoTop").textContent = mejor.nombre + " (" + mejor.victorias + ")";
+    } else {
+        document.getElementById("pilotoTop").textContent = "Sin pilotos";
+    }
+
+    // ======================
+    // NAVE MÁS RÁPIDA
+    // ======================
+    if (naves.length > 0) {
+        let rapida = naves[0];
+        for (let i = 1; i < naves.length; i++) {
+            if (naves[i].velocidad > rapida.velocidad) {
+                rapida = naves[i];
+            }
+        }
+        document.getElementById("naveTop").textContent = rapida.nombre + " (" + rapida.velocidad + ")";
+    }
+
+    // ======================
+    // BARRA DE PROGRESO
+    // ======================
+    let total = listaMisiones.length;
+    let porcentaje = 0;
+
+    if (total > 0) {
+        porcentaje = (completadas / total) * 100;
+    }
+
+    document.getElementById("barraProgreso").style.width = porcentaje + "%";
+    document.getElementById("textoProgreso").textContent = Math.floor(porcentaje) + "% completado";
+}
