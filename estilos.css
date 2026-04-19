@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("./imgStarWars/background.jpg");
+    background-image: url("background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -24,7 +24,7 @@ body {
    HEADER Y FOOTER
    ========================================================= */
 header {
-    background-image: url("./imgStarWars/header.png");
+    background-image: url("header.png");
     background-size: cover;
     background-position: top;
     display: flex;
@@ -131,15 +131,21 @@ footer {
 }
 
 .card h3 {
-    font-size: 2vw;
+    font-size: 2.0vw;
     margin-bottom: 1vw;
     color: #eee;
 }
 
 .card p {
-    font-size: 1.1vw;
+    font-size: 1.5vw;
     margin: 0.5vw 0;
     color: #bbb;
+}
+.imgNave {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
 .estado-operativa { color: #00ff00; font-weight: bold; }

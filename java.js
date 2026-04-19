@@ -51,11 +51,11 @@ t4.addEventListener("click", function() {
 */
 
 const naves = [
-    { nombre: "X-Wing", tipo: "Caza", emoji: "🚀", velocidad: 105, tripulacion: 1, estado: "operativa" },
-    { nombre: "Millennium Falcon", tipo: "Transporte", emoji: "🛸", velocidad: 120, tripulacion: 6, estado: "operativa" },
-    { nombre: "Y-Wing", tipo: "Bombardero", emoji: "💣", velocidad: 85, tripulacion: 2, estado: "en reparación" },
-    { nombre: "A-Wing", tipo: "Caza", emoji: "🚀", velocidad: 130, tripulacion: 1, estado: "operativa" },
-    { nombre: "Nebulon-B", tipo: "Fragata", emoji: "🚢", velocidad: 70, tripulacion: 850, estado: "destruida" }
+    { nombre: "X-Wing", tipo: "Caza", velocidad: 105, tripulacion: 1, estado: "operativa",img:"Xwing-ROOCE.webp" },
+    { nombre: "Millennium Falcon", tipo: "Transporte", velocidad: 120, tripulacion: 6, estado: "operativa",img:"Millennium_Falcon_Fathead_TROS.webp" },
+    { nombre: "Y-Wing", tipo: "Bombardero",velocidad: 85, tripulacion: 2, estado: "en reparación",img:"YWing-JtRSaV.webp" },
+    { nombre: "A-Wing", tipo: "Caza", velocidad: 130, tripulacion: 1, estado: "operativa",img:"A-wing_DICE.webp" },
+    { nombre: "Nebulon-B", tipo: "Fragata", velocidad: 70, tripulacion: 850, estado: "destruida",img:"MedicalFrigate-BaseSeries4.webp" }
 ];
 
 let ordenAscendente = true;
@@ -71,7 +71,8 @@ function mostrarNaves(lista) {
     for (let i = 0; i < lista.length; i++) {
         hangar.innerHTML += `
             <div class="card">
-                <h3>${lista[i].emoji} ${lista[i].nombre}</h3>
+                <img src="${lista[i].img}" class="imgNave">
+                <h3>${lista[i].nombre}</h3>
                 <p>Tipo: ${lista[i].tipo}</p>
                 <p>Velocidad: ${lista[i].velocidad}</p>
                 <p>Tripulación: ${lista[i].tripulacion}</p>
@@ -98,6 +99,8 @@ ordenarBtn.addEventListener("click", () => {
     }
     ordenAscendente = !ordenAscendente;
     mostrarNaves(naves);
+    
+
 });
 
 function cargarTipos() {
@@ -344,6 +347,7 @@ function pintarMisiones() {
     contCompletada.textContent = completadas;
 
     guardarMisiones();
+    
 }
 
 filtroDificultad.addEventListener("change", pintarMisiones);
