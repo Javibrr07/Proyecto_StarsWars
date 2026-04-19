@@ -47,15 +47,16 @@ t4.addEventListener("click", function() {
     actualizarDashboard(); // AÑADIDO: Ahora se actualiza al entrar a la sección
 });
 
-/* SECCIÓN 1: HANGAR DE NAVES
+/* 
+SECCIÓN 1: HANGAR DE NAVES
 */
 
 const naves = [
-    { nombre: "X-Wing", tipo: "Caza", velocidad: 105, tripulacion: 1, estado: "operativa",img:"Xwing-ROOCE.webp" },
-    { nombre: "Millennium Falcon", tipo: "Transporte", velocidad: 120, tripulacion: 6, estado: "operativa",img:"Millennium_Falcon_Fathead_TROS.webp" },
-    { nombre: "Y-Wing", tipo: "Bombardero",velocidad: 85, tripulacion: 2, estado: "en reparación",img:"YWing-JtRSaV.webp" },
-    { nombre: "A-Wing", tipo: "Caza", velocidad: 130, tripulacion: 1, estado: "operativa",img:"A-wing_DICE.webp" },
-    { nombre: "Nebulon-B", tipo: "Fragata", velocidad: 70, tripulacion: 850, estado: "destruida",img:"MedicalFrigate-BaseSeries4.webp" }
+    { nombre: "X-Wing", tipo: "Caza", velocidad: 105, tripulacion: 1, estado: "operativa", img: "./imgStarWars/Xwing-ROOCE.webp" },
+    { nombre: "Millennium Falcon", tipo: "Transporte", velocidad: 120, tripulacion: 6, estado: "operativa", img: "./imgStarWars/Millennium_Falcon_Fathead_TROS.webp" },
+    { nombre: "Y-Wing", tipo: "Bombardero", velocidad: 85, tripulacion: 2, estado: "en reparación", img: "./imgStarWars/YWing-JtRSaV.webp" },
+    { nombre: "A-Wing", tipo: "Caza", velocidad: 130, tripulacion: 1, estado: "operativa", img: "./imgStarWars/A-wing_DICE.webp" },
+    { nombre: "Nebulon-B", tipo: "Fragata", velocidad: 70, tripulacion: 850, estado: "destruida", img: "./imgStarWars/MedicalFrigate-BaseSeries4.webp" }
 ];
 
 let ordenAscendente = true;
@@ -356,9 +357,9 @@ function guardarMisiones() {
     localStorage.setItem("misiones", JSON.stringify(listaMisiones));
 }
 
-/* =========================================================================
+/* 
    4. INICIALIZACIÓN (Lo que ocurre al abrir la página)
-   ========================================================================= */
+*/
 function iniciarAplicacion() {
     // 1. Mostrar la sección 2 por defecto al abrir el navegador
     ocultarTodo();
@@ -378,9 +379,9 @@ function iniciarAplicacion() {
 iniciarAplicacion();
 
 function actualizarDashboard() {
-    // ======================
+   
     // PILOTOS
-    // ======================
+  
     let activos = 0;
     let heridos = 0;
     let kia = 0;
@@ -395,9 +396,9 @@ function actualizarDashboard() {
     document.getElementById("heridos").textContent = heridos;
     document.getElementById("KIA").textContent = kia;
 
-    // ======================
+  
     // NAVES
-    // ======================
+
     let operativas = 0;
     let reparacion = 0;
     let destruidas = 0;
@@ -412,9 +413,9 @@ function actualizarDashboard() {
     document.getElementById("reparacion").textContent = reparacion;
     document.getElementById("destruidas").textContent = destruidas;
     
-    // ======================
+
     // MISIONES
-    // ======================
+ 
     let pendientes = 0;
     let enCurso = 0;
     let completadas = 0;
@@ -429,9 +430,9 @@ function actualizarDashboard() {
     document.getElementById("EnCurso").textContent = enCurso;
     document.getElementById("completadas").textContent = completadas;
 
-    // ======================
+
     // MEJOR PILOTO 
-    // ======================
+
     let mejor = null;
 
     for (let i = 0; i < listaPilotos.length; i++) {
@@ -446,9 +447,9 @@ function actualizarDashboard() {
         document.getElementById("pilotoTop").textContent = "Sin pilotos";
     }
 
-    // ======================
+
     // NAVE MÁS RÁPIDA
-    // ======================
+  
     if (naves.length > 0) {
         let rapida = naves[0];
         for (let i = 1; i < naves.length; i++) {
@@ -459,9 +460,9 @@ function actualizarDashboard() {
         document.getElementById("naveTop").textContent = rapida.nombre + " (" + rapida.velocidad + ")";
     }
 
-    // ======================
+
     // BARRA DE PROGRESO
-    // ======================
+  
     let total = listaMisiones.length;
     let porcentaje = 0;
 
